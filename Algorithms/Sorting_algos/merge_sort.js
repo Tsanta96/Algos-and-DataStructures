@@ -1,3 +1,6 @@
+//Time complexity = O(nlog(n))
+//Space Complexity = O(n)
+
 function mergeSort(arr) {
     if (arr.length <= 1) return arr;
 
