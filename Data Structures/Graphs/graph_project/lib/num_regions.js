@@ -44,7 +44,6 @@ function numRegions(graph) {
 function isNewRegion(node, graph, visited) {
     if (visited.has(node)) return false;
 
-
     //Notice how this is actually adding the node to the passed in "visited"
     //set. Even though this is in a helper function it is still adding to the set and
     //the additions are persisted in the main function.
