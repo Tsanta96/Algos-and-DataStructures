@@ -44,8 +44,11 @@ function numRegions(graph) {
 function isNewRegion(node, graph, visited) {
     if (visited.has(node)) return false;
 
-    visited.add(node);
 
+    //Notice how this is actually adding the node to the passed in "visited"
+    //set. Even though this is in a helper function it is still adding to the set and
+    //the additions are persisted in the main function.
+    visited.add(node);
     graph[node].forEach(neighbor => {
         isNewRegion(neighbor, graph, visited);
     })
@@ -53,7 +56,7 @@ function isNewRegion(node, graph, visited) {
     return true;
 }
 
-//a, b
+//1 2
 
 // 'a': ['b'],
 // 'b': ['a'],
