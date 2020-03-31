@@ -27,13 +27,6 @@ var findMode = function (root) {
     //Traverse the tree, add the value of each node to an array
     //create an object that stores the values of an array and the frequency that they appear.
     //Sort that object by values (frequency) return the most frequent
-    if (!root) return null;
-
-    return [
-        ...findMode(root.left.val),
-        root,
-        ...findMode(root.right.val)
-    ];
 };
 
 let input = [1, null, 2, 2]
