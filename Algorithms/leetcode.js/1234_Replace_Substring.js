@@ -12,38 +12,49 @@
 
 //Using a sliding window approach for O(n) time
 //Figure out what's happening
-var balancedString = function (s) {
-    let map = {};
-    let n = s.length;
-    let res = n;
-    let i = 0;
-    let k = n / 4;
+// var balancedString = function (s) { 
+//     let qwerMap = new Map();
+//     for (let i = 0; i < s.length; i++) {
+//         qwerMap.set(s[i], qwerMap.get(s[i]) === undefined ? 1 : qwerMap.get(s[i]) + 1);
+//     }
 
-    for (let j = 0; j < n; ++j) {
-        map[s[j]] = ~~map[s[j]] + 1;
+//     let desiredCharVal = s.length / 4;
+//     let counter = 0;
+
+//     qwerMap.forEach(ele => {
+//         counter += Math.abs(desiredCharVal - ele);
+//     })
+
+//     return counter;
+// };
+
+const balancedString = s => {
+  let map = {};
+  let n = s.length;
+  let res = n;
+  let i = 0;
+  let k = n / 4;
+
+  for (let j = 0; j < n; ++j) {
+    map[s[j]] = ~~map[s[j]] + 1;
+  }
+
+  map['Q'] = map['Q'] || k;
+  map['W'] = map['W'] || k;
+  map['E'] = map['E'] || k;
+  map['R'] = map['R'] || k; 
+    
+  for (let j = 0; j < n; ++j) {
+    --map[s[j]];
+      
+    while (i < n && map['Q'] <= k && map['W'] <= k && map['E'] <= k && map['R'] <= k) {
+      res = Math.min(res, j - i + 1);
+      map[s[i]]++;
+      i++;
     }
+  }
 
-    map['Q'] = map['Q'] || k;
-    map['W'] = map['W'] || k;
-    map['E'] = map['E'] || k;
-    map['R'] = map['R'] || k;
-
-    for (let j = 0; j < n; ++j) {
-        --map[s[j]];
-
-        while (i < n && map['Q'] <= k && map['W'] <= k && map['E'] <= k && map['R'] <= k) {
-            res = Math.min(res, j - i + 1);
-            map[s[i]]++;
-            i++;
-        }
-    }
-
-    return res;
+  return res;
 };
 
-console.log(balancedString('qwerrreweeerwq'));
-
-n = 14     q: 2
-res = 14   w: 3
-i = 0      e: 5
-k = 3.5    r: 4
+console.log(balancedString('qqqqwwer'));
