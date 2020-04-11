@@ -35,19 +35,19 @@
 
 
 //Solution 1 (using splice to replace an element in an array)
-// var removeDuplicates = function (nums) {
-//     if (nums.length === 0) return 0;
-//     if (nums.length === 1) return 1;
+var removeDuplicates = function (nums) {
+    if (nums.length === 0) return 0;
+    if (nums.length === 1) return 1;
 
-//     for (let i = 1; i < nums.length; i++) {
-//         if( nums[i] === nums[i - 1]) {
-//             nums.splice(i, 1);
-//             i = i - 1;
-//         }
-//     }
+    for (let i = 1; i < nums.length; i++) {
+        if( nums[i] === nums[i - 1]) {
+            nums.splice(i, 1);
+            i = i - 1;
+        }
+    }
 
-//     return nums.length
-// };
+    return nums.length
+};
 
 //Solution 2 (using a fast runner and a slow runner)
 var removeDuplicates = function (nums) {

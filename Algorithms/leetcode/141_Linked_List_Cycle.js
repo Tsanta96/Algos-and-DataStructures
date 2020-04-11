@@ -20,7 +20,7 @@ var hasCycle = function (head) {
             return true
         } else {
             listHash.add(head);
-            if (head.next === null) {
+            if (head.next === null) {       
                 return false
             } else {
                 head = head.next;
