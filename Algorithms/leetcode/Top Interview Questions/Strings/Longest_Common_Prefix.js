@@ -15,21 +15,23 @@
 
 // All given inputs are in lowercase letters a-z.
 
+//PREFIX - So at the beginning of the word.
+
 var longestCommonPrefix = function (strs) {
     if (!strs.length) return '';
     let prefix = '';
     let maxPrefixLength = Math.min(...strs.map(str => str.length));
     for (let i = 0; i < maxPrefixLength; i++) {
         let char = strs[0][i];
-        if (strs.every(str => str[i]) === char) {
+        if (strs.every(str => str[i] === char)) {
             prefix += char;
         } else {
-            break
+            break;
         }
-    };
+    }
     return prefix;
 };
 
-let testArr = ['cat', "harcat", "mcat"];
+let testArr = ["flower", "flow", "flight"];
 
 console.log(longestCommonPrefix(testArr));
