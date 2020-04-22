@@ -13,7 +13,6 @@
 
 //Iterative
 var isPalindrome = function (head) {
-
     if (!head) return null;
 
     let prev = head,
@@ -27,12 +26,10 @@ var isPalindrome = function (head) {
 
     let second = head;
 
-    while (head.next != null && first.prev != null) {
-
+    while (second.next != null && first.prev != null) {
         if (second.val != first.val) {
             return false;
         }
-
         second = second.next;
         first = first.prev;
     }
@@ -60,3 +57,21 @@ var isPalindrome = function (head) {
 // Output -> boolean
 // Tools -> stack
 // Strategy 1) Create a reversed version of the linked list and see if it is the same
+
+function isPalindrome(head) {
+    if (!head) return true;
+
+    let first = head;
+    let second = head;
+    while (first.next != null) {
+        first.next.prev = first;
+        first = first.next;
+    }
+
+    while (second.next !== null) {
+        if (second.val !== first.val) return false;
+        second = second.next;
+        first = first.prev;
+    }
+    return true;
+}
