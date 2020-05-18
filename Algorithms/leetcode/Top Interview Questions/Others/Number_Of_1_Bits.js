@@ -36,18 +36,32 @@
 
 // If this function is called many times, how would you optimize it?
 
+//Approach #1 (Loop and Flip)
+//Time Complexity = O(1)
+//Space Complexity = O(1)
+
+// var hammingWeight = function(n) {
+// 	let bits = 0;
+// 	let mask = 1;
+// 	for (let i = 0; i < 32; i++) {
+// 		if ((n & mask) != 0) {
+// 			bits++;
+// 		}
+// 		//moves mask to the left in a binary number to check places
+// 		mask <<= 1;
+// 	}
+// }
+
+
+//Approach #2 (Bit Manipulation Trick)
 var hammingWeight = function(n) {
-	let nString = parseInt(n);
-	// let nStringArr = nString.split("");
-	let bitCount = 0;
-
-	console.log(nString);
-
-// 	nStringArr.forEach(char => {
-// 		if (char === "1") bitCount++;	
-// 	})	
-
-// 	return bitCount;
+	let sum = 0;
+	while (n != 0) {
+		console.log(n);
+		sum++;
+		n &= (n-1);
+	} 
+	return sum;
 }
 
-hammingWeight(00111);
+console.log(hammingWeight(00000000000000000000000000001011));
