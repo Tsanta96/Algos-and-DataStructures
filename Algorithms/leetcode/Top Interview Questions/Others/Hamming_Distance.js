@@ -18,19 +18,47 @@
 
 // The above arrows point to positions where the corresponding bits are different.
 
-var hammingDistance = function(x, y) {
-    let xBit = (x).toString(2);
-    let yBit = (y).toString(2);
+// x = 0 0 1
+// y = 1 0 0
 
-    console.log("xBit => ", xBit.split("").reverse());
-    console.log("yBit => ", yBit.split("").reverse());
+// var hammingDistance = function(x, y) {
+//     let xBit = (x).toString(2);
+//     let yBit = (y).toString(2);
 
-    let maxLength = xBit.length > yBit.length ? xBit.length : yBit.length;
-    let diff = 0;
+//     let xBitArr = xBit.split("");
+//     let yBitArr = yBit.split("");
+    
+//     let lengthDiff = Math.abs(xBitArr.length - yBitArr.length);
 
-    // for (let i = 0; i <= maxLength; i++) {
+//     for (let i = 0; i < lengthDiff; i++) {
+//         if (xBitArr.length < yBitArr.length) {
+//             xBitArr.unshift('0');
+//         } else {
+//             yBitArr.unshift('0');
+//         }
+//     }
 
-    // }
+//     let hamDistance = 0;
+
+//     for (let i = 0; i < yBitArr.length; i++) {
+//         if (yBitArr[i] !== xBitArr[i]) {
+//             hamDistance++;
+//         }
+//     }
+
+//     return hamDistance;
+// }
+
+//EASIER SOLUTION:
+var hammingDistance = (x, y) => countOnes(x^y);
+
+const countOnes = (n) => {
+    let y = 0;
+    while (n) {
+        y++;
+        n &= n-1;
+    }
+    return y;
 }
 
 console.log(hammingDistance(1,4));
